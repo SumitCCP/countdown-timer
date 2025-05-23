@@ -29,7 +29,7 @@ def countdown():
 
     # Load default font
     font = ImageFont.load_default()
-    text_width, text_height = draw.textsize(text, font=font)
+    bbox = draw.textbbox((0, 0), text, font=font) text_width = bbox[2] - bbox[0] text_height = bbox[3] - bbox[1]
 
     # Center the text
     x = (img.width - text_width) // 2
@@ -68,7 +68,7 @@ def countdown():
         img = Image.new('RGB', (220, 60), color=(255, 255, 255))
         draw = ImageDraw.Draw(img)
         font = ImageFont.load_default()
-        text_width, text_height = draw.textsize(text, font=font)
+        bbox = draw.textbbox((0, 0), text, font=font) text_width = bbox[2] - bbox[0] text_height = bbox[3] - bbox[1]
         draw.text(((220 - text_width) / 2, (60 - text_height) / 2), text, font=font, fill=(0, 0, 0))
 
         buf = io.BytesIO()
